@@ -11,12 +11,16 @@
     <title>功能区</title>
 </head>
 <body>
-    <a href="/user/address.jsp" target="rightFrame">添加收获地址</a>
-        <br><br>
-    <a href="/user/bank.jsp" target="rightFrame">添加银行卡</a>
-        <br><br>
-    <a href="/searchUserList" target="rightFrame">查看用户</a>
-        <br><br>
+    <a href="/goods/addGoods.jsp" target="rightFrame">添加商品</a>
+    <br><br>
+    <a href="/searchGoodsList" target="rightFrame">查看商品</a>
+    <br><br>
+    <a href="/goods/addGoodsType.jsp" target="rightFrame">商品分类</a>
+    <br><br>
+    <a href="/goods/addGoodsSupplier.jsp" target="rightFrame">供应商</a>
+    <br><br>
+    <a href="/Administrator/right.jsp" target="_top">返回</a>
+    <br><br>
     <a href="/logout" target="_top">退出</a>
 </body>
 </html>

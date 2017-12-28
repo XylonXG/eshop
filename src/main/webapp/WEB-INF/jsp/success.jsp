@@ -14,6 +14,8 @@
 success<br>
 账号${user.username}<br>
 收获地址${address}<br>
-银行卡信息${bank}
+银行卡信息${bank}<br>
+商品信息${goods}<br>
+商品类型${goodsType}<br>
 </body>
 </html>

@@ -11,10 +11,10 @@
     <title>会员信息管理</title>
 </head>
 <frameset rows="20%,*" border="2px" bordercolor="blank">
-    <frame src="/user/top.jsp" name="topFrame">
+    <frame src="/goods/top.jsp" name="topFrame">
     <frameset cols="15%,*">
-        <frame src="/user/left.jsp" name="leftFrame" noresize="noresize">
-        <frame src="/user/address.jsp" name="rightFrame">
+        <frame src="/goods/left.jsp" name="leftFrame" noresize="noresize">
+        <frame src="/goods/addGoods.jsp" name="rightFrame">
     </frameset>
 </frameset>
 <body>

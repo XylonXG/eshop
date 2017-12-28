@@ -11,11 +11,11 @@
     <title>功能区</title>
 </head>
 <body>
-    <a href="/user/right.jsp" target="rightFrame">会员管理</a>
+    <a href="/user/right.jsp" target="_top">会员管理</a>
         <br><br>
-    <a href="/goods/right.jsp" target="rightFrame">商品管理</a>
+    <a href="/goods/right.jsp" target="_top">商品管理</a>
         <br><br>
-    <a href="/order/right.jsp" target="rightFrame">订单管理</a>
+    <a href="/order/right.jsp" target="_top">订单管理</a>
         <br><br>
     <a href="/logout" target="_top">退出</a>
 </body>

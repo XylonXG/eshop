@@ -8,5 +8,46 @@
         insert into goodsInfo(goodsNum,goodsName,goodsCode,goodsType,goodsSupplier,goodsShelfTime,goodsImgURL,goodsImgHttpURL,isGift,isReturn,goodsCreateTime)
         values(#{goodsNum},#{goodsName},#{goodsCode},#{goodsType},#{goodsSupplier},#{goodsShelfTime},#{goodsImgURL},#{goodsImgHttpURL},#{isGift},#{isReturn},#{goodsCreateTime})
     </insert>
+    <delete id=""></delete>
 
+    <!--分页查询-->
+    <!--分页查询-->
+
+    <select id="searchGoodsList" parameterType="page" resultType="goods">
+        select * from goodsInfo limit #{startRow},#{pageSize}
+    </select>
+
+    <select id="searchTotalCount" parameterType="page" resultType="java.lang.Integer">
+        select count(id) from goodsInfo
+        <where>
+            <if test="queryCondition!=null">
+                and goodsType like CONCAT('%',#{queryCondition},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getGoodsBycondtion" parameterType="page" resultType="goods">
+        select * from goodsInfo
+        <where>
+            <if test="queryCondition!=null">
+                goodsType like  CONCAT('%',#{queryCondition},'%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteGoods" parameterType="java.lang.Integer">
+        delete from goodsInfo
+        where
+        id=#{id}
+    </delete>
+    <!--添加商品类型-->
+    <insert id="addGoodsType" parameterType="goodsType">
+        insert into goodstype(goodTypeNum,goodsTypeName,isUsed,createTime)
+        values(#{goodTypeNum},#{goodsTypeName},#{isUsed},#{createTime})
+    </insert>
+    <!--添加供应商-->
+    <insert id="addGoodsSupplier" parameterType="goodsSupplier">
+        insert into goodssupplier(goodsSupplierNum,goodsSupplierName,goodsSupplierCompany,goodsSupplierCompanyAddress,createTime)
+        values(#{goodsSupplierNum},#{goodsSupplierName},#{goodsSupplierCompany},#{goodsSupplierCompanyAddress},#{createTime})
+    </insert>
 </mapper>

@@ -17,6 +17,8 @@
         <br><br>
     <a href="/searchUserList" target="rightFrame">查看用户</a>
         <br><br>
+    <a href="/Administrator/right.jsp" target="_top">返回</a>
+        <br><br>
     <a href="/logout" target="_top">退出</a>
 </body>
 </html>

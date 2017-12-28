@@ -11,9 +11,9 @@
     <title>会员信息管理</title>
 </head>
 <frameset rows="20%,*" border="2px" bordercolor="blank">
-    <frame src="/user/top.jsp" name="topFrame">
+    <frame src="/Administrator/top.jsp" name="topFrame">
     <frameset cols="15%,*">
-        <frame src="/user/left.jsp" name="leftFrame" noresize="noresize">
+        <frame src="/Administrator/left.jsp" name="leftFrame" noresize="noresize">
         <frame src="" name="rightFrame">
     </frameset>
 </frameset>

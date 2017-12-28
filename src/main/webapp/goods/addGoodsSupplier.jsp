@@ -1,17 +1,17 @@
 <%--
   Created by IntelliJ IDEA.
   User: Monologue-XG
-  Date: 2017/12/27
-  Time: 15:16
+  Date: 2017/12/28
+  Time: 21:37
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     window.onload = function ajaxSend() {
-     /*   alert("asd");*/
+        /*   alert("asd");*/
         $.ajax({
             type : "post",// 指定是post还是get
             //data : "username=" + username + "&userpass=" + userpass,//发送到服务器的数据
@@ -24,7 +24,7 @@
         })
     }
     function ajaxSendCallBack(data) {
-      /*  alert(data[0].name);*/
+        /*  alert(data[0].name);*/
         for ( var i = 0; i < data.length; i++) {
             var op = document.createElement("option");//创建一个指名名称元素
             op.value = data[i].name;//设置op的实际值为当前的省份名称
@@ -38,7 +38,7 @@
     $(function () {
         $("#p").change(function (res) {
             var provincename = $("#p").val();
-           /* alert(provincename);*/
+            /* alert(provincename);*/
             $.ajax({
                 type : "post",// 指定是post还是get
                 //data : "provincename=" + provincename,//发送到服务器的数据
@@ -54,7 +54,7 @@
 
     function ajaxSendCallBackcity(data) {
         //如果是jsonArray这样返回
-       /* alert(data[0].name);*/
+        /* alert(data[0].name);*/
         //返回json结果
         /*
                 把select中的所有option移除（除了请选择）
@@ -79,35 +79,29 @@
 </script>
 <html>
 <head>
-    <title>Title</title>
+    <title>添加供应商</title>
 </head>
 <body>
-
 <center>
-  <fieldset>
-      <legend>添加收获地址</legend>
-
-      <form action="/addAddress?userNum=${user.userNum}" method="post">
-          会员编号:<input type="text" name="username" value="${user.userNum}" readonly="readonly">
-          <br>
-          省:<select name="province" id="p">
-              <option>===请选择省===</option>
-          </select>
-          <br>
-          地市:<select name="city" id="c">
-              <option>===请选择市===</option>
-          </select>
-          <br>
-          详细地址:<textarea class="form-control" rows="3" name="addressDetail"></textarea>
-          <br>
-          是否主收获地址<input type="checkbox" name="isOften">
-            是否可用<input type="checkbox" name="isUsed">
-          <br><br>
-
-          <button type="submit" class="btn btn-info">添加</button>
-          <button type="reset" class="btn btn-info">重置</button>
-      </form>
-  </fieldset>
+    <fieldset>
+        <legend>添加供应商</legend>
+        <form action="/addGoodsSupplier" method="post">
+            供应商名称:<input type="text" name="goodsSupplierName">
+            <br><br>
+            注册公司:<input type="text" name="goodsSupplierCompany">
+            <br><br>
+            所在省:<select name="province" id="p">
+                    <option>==请选择省==</option>
+                  </select>
+            <br><br>
+            所在地市:<select name="city" id="c">
+                     <option>==请选择地市==</option>
+                   </select>
+            <br><br>
+            <button type="submit" class="btn btn-info">添加</button>
+            <button type="reset" class="btn btn-info">重置</button>
+        </form>
+    </fieldset>
 </center>
 </body>
 </html>

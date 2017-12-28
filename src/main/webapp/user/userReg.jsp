@@ -20,9 +20,9 @@
 <center>
     <br><br><h1>会 员 注 册</h1><br>
     <form action="/userReg" method="post" class="form-inline" role="form">
-        会员账号:<input type="text" name="userAccount"><br><br>
-        会员密码:<input type="password" name="userPassword"><br><br>
-        确认密码:<input type="password" name="reuserPassword"><br><br>
+        会员账号:<input type="text" name="username"><br><br>
+        会员密码:<input type="password" name="password"><br><br>
+        确认密码:<input type="password" name="rePassword"><br><br>
         身份证号:<input type="text" name="userIDcard"><br><br>
         会员生日:<input type="date" name="userBirth"><br><br>
         真实姓名:<input type="text" name="userTrueName"><br><br>

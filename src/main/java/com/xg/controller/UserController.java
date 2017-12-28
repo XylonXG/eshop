@@ -1,5 +1,6 @@
 package com.xg.controller;
 
+import com.xg.entity.Page;
 import com.xg.entity.User;
 import com.xg.service.UserService;
 import org.apache.shiro.crypto.hash.SimpleHash;
@@ -8,8 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -39,12 +43,13 @@ public class UserController {
         }
         String salt=sb.toString();
         SimpleHash simpleHash=new SimpleHash("MD5",user.getPassword(),salt,3);
-        String userPassword=simpleHash.toString();
+        String password=simpleHash.toString();
 
 //        会员的主收获地址id
+
         user.setUserNum(userNum);
         user.setUserRegDate(userRegDate);
-        user.setPassword(userPassword);
+        user.setPassword(password);
         user.setSalt(salt);
 //
         System.out.println("--newUser--"+user);
@@ -64,5 +69,103 @@ public class UserController {
 
         mav.setViewName("/user/userLogin.jsp");
         return mav;
+    }
+/*
+    *//*查看用户*//*
+    @RequestMapping("/selectAllUser")
+    public ModelAndView selectAllUser(){
+        ModelAndView mav=new ModelAndView();
+        User user=new User();
+        List<User> userList=userService.selectAllUser(user);
+
+        mav.getModel().put("userList",userList);
+
+        mav.setViewName("/user/showUsers.jsp");
+        return mav;
+    }*/
+
+    /*删除用户*/
+    @RequestMapping("/deleteUserByID")
+    public ModelAndView deleteUserByID(int delID){
+        ModelAndView mav=new ModelAndView();
+        userService.deleteUserByID(delID);
+        mav.setViewName("/searchUserList");
+        return mav;
+    }
+
+    /*分页查询*/
+    @RequestMapping("/searchUserList")
+    public ModelAndView searchUserList(Page page) throws UnsupportedEncodingException
+    {
+        ModelAndView mav=new ModelAndView();
+        Page p = page;
+        int pageSize = 4;
+        p.setPageSize(pageSize);
+        int curPage = p.getCurrentPage();
+        if (curPage == 0)
+        {
+            curPage = 1;
+            p.setCurrentPage(curPage);
+        }
+        int startRow = page.getStartRow();
+        if (p.getCurrentPage() != 0) {
+            startRow = getStartRowBycurrentPage(curPage, pageSize);
+        }
+        p.setStartRow(startRow);
+
+        String queryCondition = null;
+        if (page.getQueryCondition() != null) {
+            queryCondition = page.getQueryCondition();
+        }
+        List<User> userList = getUserListByCondition(page);
+
+        Integer totalCounts = this.userService.searchTotalCount(page);
+
+        int totalPages = totalCounts.intValue() % pageSize == 0 ? totalCounts.intValue() / pageSize : totalCounts.intValue() / pageSize + 1;
+
+        p.setTotalPage(totalPages);
+
+        page.setTotalRows(totalCounts.intValue());
+
+        mav.getModel().put("userList", userList);
+
+        mav.getModel().put("page", page);
+        mav.setViewName("/user/showUsers.jsp");
+        return mav;
+    }
+
+    private List<User> getUserListByCondition(Page page)
+    {
+        List<User> userList = null;
+        if (page.getQueryCondition() == null)
+        {
+            userList = this.userService.searchUserList(page);
+
+            return userList;
+        }
+        userList = this.userService.getUserBycondtion(page);
+
+
+        return userList;
+    }
+
+    @RequestMapping("/deleteUser")
+    public ModelAndView deleteUser(Integer id) {
+        ModelAndView mav=new ModelAndView();
+        this.userService.deleteUser(id);
+
+        mav.setViewName("/searchUserList");
+        return mav;
+    }
+
+    public int getStartRowBycurrentPage(int currentPage, int pageSize)
+    {
+        int startRow = 0;
+        if (currentPage == 1) {
+            return startRow = 0;
+        }
+        startRow = (currentPage - 1) * pageSize;
+
+        return startRow;
     }
 }

@@ -11,11 +11,11 @@
     <title>功能区</title>
 </head>
 <body>
-    <a href="/user/address.jsp" target="rightFrame">添加收获地址</a>
+    <a href="/user/right.jsp" target="rightFrame">会员管理</a>
         <br><br>
-    <a href="/user/bank.jsp" target="rightFrame">添加银行卡</a>
+    <a href="/goods/right.jsp" target="rightFrame">商品管理</a>
         <br><br>
-    <a href="/searchUserList" target="rightFrame">查看用户</a>
+    <a href="/order/right.jsp" target="rightFrame">订单管理</a>
         <br><br>
     <a href="/logout" target="_top">退出</a>
 </body>

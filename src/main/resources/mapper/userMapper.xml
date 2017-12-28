@@ -5,8 +5,8 @@
 <mapper namespace="com.xg.mapper.UserMapper">
     <resultMap id="userMap" type="user">
         <id property="id" column="id"></id>
-        <result property="username" column="userAccount"></result>
-        <result property="password" column="userPassword"></result>
+        <result property="username" column="username"></result>
+        <result property="password" column="password"></result>
         <result property="userNum" column="userNum"></result>
         <result property="userType" column="userType"></result>
         <result property="userIDcard" column="userIDcard"></result>
@@ -22,13 +22,54 @@
         <result property="salt" column="salt"></result>
     </resultMap>
     <insert id="userReg" parameterType="user">
-      insert into userInfo(userNum,userAccount,userPassword,userIDcard,userBirth,
-      userTrueName,userRegDate,userEamil,userPhone,salt) values(#{userNum},#{userAccount},#{userPassword},
+      insert into userInfo(userNum,username,password,userIDcard,userBirth,
+      userTrueName,userRegDate,userEamil,userPhone,salt) values(#{userNum},#{username},#{password},
       #{userIDcard},#{userBirth},#{userTrueName},#{userRegDate},#{userEamil},#{userPhone},#{salt})
     </insert>
 
     <!--用户登录-->
     <select id="selectUserByUsercode" parameterType="string" resultMap="userMap">
-        select * from userInfo where userAccount=#{usercode}
+        select * from userInfo where username=#{usercode}
     </select>
+
+    <!--查询所有用户-->
+    <select id="selectAllUser" parameterType="user" resultMap="userMap">
+        select * from userInfo
+    </select>
+
+    <!--删除用户-->
+    <delete id="deleteUserByID" parameterType="int">
+        delete from userInfo where id=#{delID}
+    </delete>
+
+    <!--分页查询-->
+
+    <select id="searchUserList" parameterType="page" resultMap="userMap">
+      select * from userInfo limit #{startRow},#{pageSize}
+    </select>
+
+    <select id="searchTotalCount" parameterType="page" resultType="java.lang.Integer">
+        select count(id) from userInfo
+        <where>
+        <if test="queryCondition!=null">
+            and username like CONCAT('%',#{queryCondition},'%')
+        </if>
+        </where>
+    </select>
+
+    <select id="getUserBycondtion" parameterType="page" resultMap="userMap">
+        select * from userInfo
+        <where>
+            <if test="queryCondition!=null">
+                username like  CONCAT('%',#{queryCondition},'%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from INVITATION
+        where
+        id=#{id}
+    </delete>
+
 </mapper>

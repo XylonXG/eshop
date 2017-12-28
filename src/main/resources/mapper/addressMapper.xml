@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xg.mapper.AddressMapper">
+    <select id="findAllProvince"  resultType="province">
+        SELECT
+        *
+        FROM province
+    </select>
+    <select id="findAllCityByProvincename"  parameterType="string" resultType="city">
+        SELECT
+        c.*
+        FROM province p LEFT JOIN city c ON p.id=c.province_id
+        WHERE p.name=#{provincename}
+    </select>
+
+    <!--添加收货地址-->
+    <insert id="addAddress" parameterType="address">
+        insert into useraddress(userNum,province,city,addressDetail,isOften,isUsed,createDate)
+        values(#{userNum},#{province},#{city},#{addressDetail},#{isOften},#{isUsed},#{createDate})
+    </insert>
+
+</mapper>

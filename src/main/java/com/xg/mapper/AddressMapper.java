@@ -1,14 +1,18 @@
 package com.xg.mapper;
 
+import com.xg.entity.Address;
 import com.xg.entity.City;
 import com.xg.entity.Province;
 
 import java.util.List;
 
 public interface AddressMapper {
-    /*查询所有的省份*/
-    public List<Province> selectAllProvince();
+    //城市
+    public List<Province> findAllProvince();
+    //省份
+    public List<City> findAllCityByProvincename(String provincename);
 
-    /*查询所有的地市*/
-    public List<City> selectAllCity();
+    /*添加收获地址*/
+
+    public void addAddress(Address address);
 }

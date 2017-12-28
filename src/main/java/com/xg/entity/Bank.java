@@ -2,13 +2,12 @@ package com.xg.entity;
 
 import java.io.Serializable;
 
-public class Address implements Serializable {
+public class Bank implements Serializable {
     private int id;
     private String userNum;
-    private String province;
-    private String city;
-    private String addressDetail;
-    private String isOften;
+    private String bankNum;
+    private String bankName;
+    private String bankOpen;
     private String isUsed;
     private String createDate;
 
@@ -28,36 +27,28 @@ public class Address implements Serializable {
         this.userNum = userNum;
     }
 
-    public String getProvince() {
-        return province;
+    public String getBankNum() {
+        return bankNum;
     }
 
-    public void setProvince(String provence) {
-        this.province = provence;
+    public void setBankNum(String bankNum) {
+        this.bankNum = bankNum;
     }
 
-    public String getCity() {
-        return city;
+    public String getBankName() {
+        return bankName;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
     }
 
-    public String getAddressDetail() {
-        return addressDetail;
+    public String getBankOpen() {
+        return bankOpen;
     }
 
-    public void setAddressDetail(String addressDetail) {
-        this.addressDetail = addressDetail;
-    }
-
-    public String getIsOften() {
-        return isOften;
-    }
-
-    public void setIsOften(String isOften) {
-        this.isOften = isOften;
+    public void setBankOpen(String bankOpen) {
+        this.bankOpen = bankOpen;
     }
 
     public String getIsUsed() {
@@ -78,13 +69,12 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return "Address{" +
+        return "Bank{" +
                 "id=" + id +
                 ", userNum='" + userNum + '\'' +
-                ", provence='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", addressDetail='" + addressDetail + '\'' +
-                ", isOften='" + isOften + '\'' +
+                ", bankNum='" + bankNum + '\'' +
+                ", bankName='" + bankName + '\'' +
+                ", bankOpen='" + bankOpen + '\'' +
                 ", isUsed='" + isUsed + '\'' +
                 ", createDate='" + createDate + '\'' +
                 '}';

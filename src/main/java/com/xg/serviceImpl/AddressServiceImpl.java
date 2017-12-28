@@ -1,5 +1,6 @@
 package com.xg.serviceImpl;
 
+import com.xg.entity.Address;
 import com.xg.entity.City;
 import com.xg.entity.Province;
 import com.xg.mapper.AddressMapper;
@@ -12,12 +13,16 @@ import java.util.List;
 public class AddressServiceImpl implements AddressService {
     @Resource
     private AddressMapper addressMapper;
-    /*查询所有的省份*/
-    public List<Province> selectAllProvince() {
-        return addressMapper.selectAllProvince();
+
+    public List<Province> findAllProvince() {
+        return addressMapper.findAllProvince();
     }
-    /*查询所有的地市*/
-    public List<City> selectAllCity() {
-        return addressMapper.selectAllCity();
+
+    public List<City> findAllCityByProvincename(String provincename) {
+        return addressMapper.findAllCityByProvincename(provincename);
+    }
+    /*添加收获地址*/
+    public void addAddress(Address address) {
+        addressMapper.addAddress(address);
     }
 }

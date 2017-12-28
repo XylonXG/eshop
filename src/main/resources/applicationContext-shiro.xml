@@ -28,7 +28,7 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"></property>
         <property name="loginUrl" value="/userLogin"></property>
-        <property name="successUrl" value="/user/right.jsp"></property>
+        <property name="successUrl" value="/Administrator/right.jsp"></property>
         <property name="filterChainDefinitions">
             <value>
                 /=anon
@@ -36,6 +36,7 @@
                 /userReg=anon
                 /user/userLogin.jsp=anon
                 /logout=logout
+                /selectAllUser=anon
                 /**=authc
             </value>
         </property>

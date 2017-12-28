@@ -16,13 +16,13 @@
     <context:component-scan base-package="com.xg.realm"></context:component-scan>
 
     <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driver}"></property>
         <property name="url" value="${jdbc.url}"></property>
         <property name="username" value="${jdbc.username}"></property>
         <property name="password" value="${jdbc.password}"></property>
-        <property name="loginTimeout" value="5000"></property>
-        <property name="maxActive" value="200"></property>
+        <!--分页插件-->
+
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

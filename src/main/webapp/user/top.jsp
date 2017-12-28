@@ -14,6 +14,6 @@
 <center>
     <h1>会 员 信 息 管 理</h1>
 </center>
-欢迎会员:admin
+欢迎会员:${user.username}
 </body>
 </html>

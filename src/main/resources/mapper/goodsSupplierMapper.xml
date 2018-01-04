@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xg.mapper.GoodsSupplierMapper">
+    <!--分页查看供应商-->
+    <select id="searchGoodsSupplierList" parameterType="page" resultType="goodsSupplier">
+        select * from goodssupplier limit #{startRow},#{pageSize}
+    </select>
+
+    <select id="searchGoodsSupplierTotalCount" parameterType="page" resultType="java.lang.Integer">
+        select count(id) from goodssupplier
+        <where>
+            <if test="queryCondition!=null">
+                and goodsSupplierName like CONCAT('%',#{queryCondition},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getGoodsSupplierBycondtion" parameterType="page" resultType="goodsSupplier">
+        select * from goodsSupplier
+        <where>
+            <if test="queryCondition!=null">
+                goodsSupplierName like  CONCAT('%',#{queryCondition},'%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteGoodsSupplier" parameterType="java.lang.Integer">
+        delete from goodssupplier
+        where
+        id=#{id}
+    </delete>
+</mapper>

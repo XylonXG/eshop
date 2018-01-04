@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xg.mapper.GoodsTypeMapper">
+    <!--分页查看商品类型-->
+    <select id="searchGoodsTypeList" parameterType="page" resultType="goodsType">
+        select * from goodstype limit #{startRow},#{pageSize}
+    </select>
+
+    <select id="searchGoodsTypeTotalCount" parameterType="page" resultType="java.lang.Integer">
+        select count(id) from goodstype
+        <where>
+            <if test="queryCondition!=null">
+                and goodsTypeName like CONCAT('%',#{queryCondition},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getGoodsTypeBycondtion" parameterType="page" resultType="goodsType">
+        select * from goodstype
+        <where>
+            <if test="queryCondition!=null">
+                goodsTypeName like  CONCAT('%',#{queryCondition},'%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteGoodsType" parameterType="java.lang.Integer">
+        delete from goodstype
+        where
+        id=#{id}
+    </delete>
+</mapper>

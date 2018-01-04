@@ -17,5 +17,8 @@ success<br>
 银行卡信息${bank}<br>
 商品信息${goods}<br>
 商品类型${goodsType}<br>
+供应商:${goodsSupplier}<br>
+仓库:${depot}<br>
+商品明细:${goodsDetail}<br>
 </body>
 </html>

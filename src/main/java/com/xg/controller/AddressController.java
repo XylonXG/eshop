@@ -48,8 +48,6 @@ public class AddressController {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html;character=utf-8");
         response.getWriter().print(pjson);
-
-        //这个返回给struts2的空值
         return null;
     }
 

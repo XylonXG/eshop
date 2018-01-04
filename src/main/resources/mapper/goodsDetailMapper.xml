@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xg.mapper.GoodsDetailMapper">
+    <!--添加商品明细-->
+    <insert id="addGoodsDetail" parameterType="goodsDetail">
+        insert into goodsdetail(goodsNum,goodDetailNum,goodsDesc,goodsDetailImgURL1,goodsDetailImgURL2,goodsDetailImgURL3,
+        goodsDetailImgHttpURL1,goodsDetailImgHttpURL2,goodsDetailImgHttpURL3,goodsOriginalPrice,goodsSalePrice,isUsed,goodsCreateTime)
+        values(#{goodsNum},#{goodDetailNum},#{goodsDesc},#{goodsDetailImgURL1},#{goodsDetailImgURL2},#{goodsDetailImgURL3},
+        #{goodsDetailImgHttpURL1},#{goodsDetailImgHttpURL2},#{goodsDetailImgHttpURL3},#{goodsOriginalPrice},#{goodsSalePrice},#{isUsed},#{goodsCreateTime}
+        )
+    </insert>
+    <!--查看商品-->
+    <select id="selectGoodsBygoodNum" parameterType="string" resultType="goods">
+        select * from goodsinfo where goodsNum=#{goodsNum}
+    </select>
+    <!--查看商品明细-->
+    <select id="selectGoodsDetail" parameterType="string" resultType="goodsDetail">
+        select * from goodsdetail where goodsNum=#{goodsNum}
+    </select>
+    <!--添加库存-->
+    <insert id="addDepotCount" parameterType="DepotGoodsInfo">
+        insert into depot_gooddetail(goodsNum,goodsDetailNum,depotNum,goodsCount)
+        values(#{goodsNum},#{goodsDetailNum},#{depotNum},#{goodsCount})
+    </insert>
+
+</mapper>

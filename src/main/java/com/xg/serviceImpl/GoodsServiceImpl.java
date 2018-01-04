@@ -43,4 +43,13 @@ public class GoodsServiceImpl implements GoodsService {
     public void addGoodsSupplier(GoodsSupplier goodsSupplier) {
         goodsMapper.addGoodsSupplier(goodsSupplier);
     }
+    /*查询商品类型*/
+    public List<GoodsType> selectGoodsType() {
+        return goodsMapper.selectGoodsType();
+    }
+    /*查询供应商*/
+    public List<GoodsSupplier> selectGoodsSupplier() {
+        return goodsMapper.selectGoodsSupplier();
+    }
+
 }

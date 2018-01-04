@@ -2,6 +2,7 @@ package com.xg.controller;
 
 import com.xg.entity.*;
 import com.xg.service.GoodsService;
+import org.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
@@ -79,7 +81,7 @@ public class GoodsController {
             goodsService.addGood(goods);
             System.out.println(goods);
             mav.getModel().put("goods",goods);
-            mav.setViewName("/WEB-INF/jsp/success.jsp");
+            mav.setViewName("/searchGoodsList");
 
         }
 
@@ -186,14 +188,16 @@ public class GoodsController {
         goodsService.addGoodsType(goodsType);
 
         mav.getModel().put("goodsType",goodsType);
-        mav.setViewName("/WEB-INF/jsp/success.jsp");
+        mav.setViewName("/searchGoodsTypeList");
         return mav;
     }
     /*添加供应商*/
     @RequestMapping("/addGoodsSupplier")
-    public ModelAndView addGoodsSupplier(String goodsSupplierNum,String goodsSupplierName,
+    public ModelAndView addGoodsSupplier(String goodsSupplierName,
                                          String goodsSupplierCompany,
-                                         String goodsSupplierCompanyAddress
+                                         String goodsSupplierCompanyAddress,
+                                         String province,
+                                         String city
                                         ){
         ModelAndView mav=new ModelAndView();
         GoodsSupplier goodsSupplier=new GoodsSupplier();
@@ -206,11 +210,13 @@ public class GoodsController {
         }
         String salt=sb.toString();
 //       商品编号
-        String goodTypeNum=String.valueOf(System.currentTimeMillis())+salt;
+        String goodsSupplierNum=String.valueOf(System.currentTimeMillis())+salt;
 //       创建时间
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
 
         String createTime=sdf.format(new Date());
+//      供应商所在地
+        goodsSupplierCompanyAddress=province+city;
 
         goodsSupplier.setGoodsSupplierNum(goodsSupplierNum);
         goodsSupplier.setGoodsSupplierName(goodsSupplierName);
@@ -218,7 +224,36 @@ public class GoodsController {
         goodsSupplier.setGoodsSupplierCompany(goodsSupplierCompany);
         goodsSupplier.setGoodsSupplierCompanyAddress(goodsSupplierCompanyAddress);
 
+        mav.getModel().put("goodsSupplier",goodsSupplier);
+        mav.setViewName("/WEB-INF/jsp/success.jsp");
         goodsService.addGoodsSupplier(goodsSupplier);
         return mav;
     }
+//    查询商品类型
+    @RequestMapping("/selectGoodsType")
+    public String  selectGoodsType(HttpServletResponse response) throws Exception{
+        System.out.println("---商品类型---");
+
+        List<GoodsType> goodsTypeList=goodsService.selectGoodsType();
+        JSONArray goodsTypeJson = new JSONArray(goodsTypeList);
+        //处理中文乱码，并返回给Ajax值
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;character=utf-8");
+        response.getWriter().print(goodsTypeJson);
+        return null;
+    }
+    //    查询供应商
+    @RequestMapping("/selectGoodsSupplier")
+    public String  selectGoodsSupplier(HttpServletResponse response) throws Exception{
+        System.out.println("---供应商---");
+
+        List<GoodsSupplier> goodsSupplierList=goodsService.selectGoodsSupplier();
+        JSONArray goodsTypeJson = new JSONArray(goodsSupplierList);
+        //处理中文乱码，并返回给Ajax值
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;character=utf-8");
+        response.getWriter().print(goodsTypeJson);
+        return null;
+    }
+
 }

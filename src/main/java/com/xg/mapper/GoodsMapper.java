@@ -8,7 +8,7 @@ public interface GoodsMapper {
     /*商品添加*/
     public void addGoods(Goods goods);
 
-    /*分页查询*/
+    /*分页查询商品*/
     public abstract List<Goods> searchGoodsList(Page paramPage);
 
     public abstract List<Goods> getGoodsBycondtion(Page paramPage);
@@ -22,4 +22,9 @@ public interface GoodsMapper {
     public void addGoodsType(GoodsType goodsType);
     /*添加供应商*/
     public void addGoodsSupplier(GoodsSupplier goodsSupplier);
+    /*查询商品类型*/
+    public List<GoodsType> selectGoodsType();
+    /*查询供应商*/
+    public List<GoodsSupplier> selectGoodsSupplier();
+
 }

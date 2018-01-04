@@ -60,7 +60,7 @@ public class GoodsSupplier implements Serializable {
 
     @Override
     public String toString() {
-        return "GoodsSupplier{" +
+        return "GoodsSupplierMapper{" +
                 "id=" + id +
                 ", goodsSupplierNum='" + goodsSupplierNum + '\'' +
                 ", goodsSupplierName='" + goodsSupplierName + '\'' +

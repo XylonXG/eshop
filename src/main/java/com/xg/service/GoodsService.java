@@ -23,4 +23,9 @@ public interface GoodsService {
     public void addGoodsType(GoodsType goodsType);
     /*添加供应商*/
     public void addGoodsSupplier(GoodsSupplier goodsSupplier);
+    /*查询商品类型*/
+    public List<GoodsType> selectGoodsType();
+    /*查询供应商*/
+    public List<GoodsSupplier> selectGoodsSupplier();
+
 }

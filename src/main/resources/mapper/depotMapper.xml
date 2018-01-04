@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xg.mapper.DepotMapper">
+  <insert id="addDepot" parameterType="depot">
+      insert into depotinfo(depotNum,depotName,depotAddress,isUsed,createTime)
+      values(#{depotNum},#{depotName},#{depotAddress},#{isUsed},#{createTime})
+  </insert>
+    <!--分页查看仓库-->
+    <!--分页查看供应商-->
+    <select id="searchDepotList" parameterType="page" resultType="depot">
+        select * from depotinfo limit #{startRow},#{pageSize}
+    </select>
+
+    <select id="searchDepotTotalCount" parameterType="page" resultType="java.lang.Integer">
+        select count(id) from depotinfo
+        <where>
+            <if test="queryCondition!=null">
+                and depotName like CONCAT('%',#{queryCondition},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getDepotBycondtion" parameterType="page" resultType="depot">
+        select * from depotinfo
+        <where>
+            <if test="queryCondition!=null">
+                depotName like  CONCAT('%',#{queryCondition},'%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteDepot" parameterType="java.lang.Integer">
+        delete from depotinfo
+        where
+        id=#{id}
+    </delete>
+
+    <!--查看仓库-->
+    <select id="selectDepot" resultType="depot">
+        select * from depotinfo
+    </select>
+</mapper>

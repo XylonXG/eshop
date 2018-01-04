@@ -18,7 +18,7 @@
 <center>
     <table>
         <tr>
-            <td colspan="6"><h1>商品信息</h1></td>
+            <td colspan="6"><h3>商 品 信 息</h3></td>
         </tr>
         <tr>
             <td colspan="6">商品类型：
@@ -57,7 +57,11 @@
                 <td>${item.isGift}</td>
                 <td>${item.isReturn}</td>
                 <td>${item.goodsCreateTime}</td>
-                <td><a href="/deleteGoods?id=${item.id}">删除</a></td>
+                <td><a href="/deleteGoods?id=${item.id}">删除</a>|
+                    <a href="/goods/addGoodsDetail.jsp?goodsNum=${item.goodsNum}">添加详情</a>|
+                    <a href="/selectGoodsBygoodNum?goodsNum=${item.goodsNum}">查看</a>
+                </td>
+
             </tr>
         </c:forEach>
     </table>

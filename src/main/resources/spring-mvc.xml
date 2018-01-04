@@ -17,6 +17,15 @@
         <!--加载静态资源-->
     <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
     <mvc:resources mapping="/bootstrap/**" location="/bootstrap/"></mvc:resources>
-    <mvc:resources mapping="/goodsImages/**" location="/goodsImages"></mvc:resources>
+    <mvc:resources mapping="/goodsImages/**" location="/goodsImages/"></mvc:resources>
+    <mvc:resources mapping="/goodsDetailImages/**" location="/goodsDetailImages/"></mvc:resources>
+    <mvc:resources mapping="/theme/css/**" location="/theme/css/"></mvc:resources>
+    <mvc:resources mapping="/theme/icon/**" location="/theme/icon/"></mvc:resources>
+    <mvc:resources mapping="/theme/img/ad/**" location="/theme/img/ad/"></mvc:resources>
+    <mvc:resources mapping="/theme/img/bg/**" location="/theme/img/bg/"></mvc:resources>
+    <mvc:resources mapping="/theme/img/pd/**" location="/theme/img/pd/"></mvc:resources>
+    <mvc:resources mapping="/theme/js/**" location="/theme/js/"></mvc:resources>
+    <mvc:resources mapping="/theme/login/**" location="/theme/login/"></mvc:resources>
+
 
 </beans>

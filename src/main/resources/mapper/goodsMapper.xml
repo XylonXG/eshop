@@ -50,4 +50,13 @@
         insert into goodssupplier(goodsSupplierNum,goodsSupplierName,goodsSupplierCompany,goodsSupplierCompanyAddress,createTime)
         values(#{goodsSupplierNum},#{goodsSupplierName},#{goodsSupplierCompany},#{goodsSupplierCompanyAddress},#{createTime})
     </insert>
+
+    <!--查询商品类型-->
+    <select id="selectGoodsType" resultType="goodsType">
+        select * from goodstype
+    </select>
+    <!--查询供应商-->
+    <select id="selectGoodsSupplier" resultType="goodsSupplier">
+        select * from goodssupplier
+    </select>
 </mapper>

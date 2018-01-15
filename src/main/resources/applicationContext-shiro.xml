@@ -28,15 +28,22 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"></property>
         <property name="loginUrl" value="/userLogin"></property>
-
-        <property name="successUrl" value="/Administrator/right.jsp"></property>
+        <property name="successUrl" value="/indexd.jsp"></property>
         <property name="filterChainDefinitions">
             <value>
                 /=anon
                 /user/userReg.jsp=anon
                 /userReg=anon
                 /user/userLogin.jsp=anon
+                /all-class.jsp=anon
                 /logout=logout
+                /selectAllGoodsType=anon
+                /selectGoodsByGoodsType=anon
+                /goodsDetail.jsp=anon
+                /shoppingCart.jsp=anon
+                /addGoodsToShoppingCart=anon
+                /selectSingleGoodsInfo=anon
+                /shoppingCart=anon
                 /favicon.ico=anon
                 /theme/**=anon
                 /goodsImages/**=anon

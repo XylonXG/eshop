@@ -14,4 +14,7 @@ public interface GoodsTypeMapper {
     public abstract Integer searchGoodsTypeTotalCount(Page paramPage);
 
     public abstract Integer deleteGoodsType(Integer paramInteger);
+
+    /*查看商品类型*/
+    public List<GoodsType> selectAllGoodsType();
 }

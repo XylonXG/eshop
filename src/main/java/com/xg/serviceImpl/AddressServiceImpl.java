@@ -25,4 +25,8 @@ public class AddressServiceImpl implements AddressService {
     public void addAddress(Address address) {
         addressMapper.addAddress(address);
     }
+
+    public Address selectAddressByuserNum(String userNum) {
+        return addressMapper.selectAddressByuserNum(userNum);
+    }
 }

@@ -31,4 +31,9 @@
         where
         id=#{id}
     </delete>
+
+    <!--查询所有的商品类型-->
+    <select id="selectAllGoodsType" resultType="goodsType">
+        select * from goodstype
+    </select>
 </mapper>

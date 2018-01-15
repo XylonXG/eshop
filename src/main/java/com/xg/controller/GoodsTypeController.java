@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -90,5 +93,21 @@ public class GoodsTypeController {
         startRow = (currentPage - 1) * pageSize;
 
         return startRow;
+    }
+
+    @RequestMapping("/selectAllGoodsType")
+    public String selectAllGoodsType(HttpServletRequest request, HttpServletResponse response) throws Exception{
+
+        System.out.println("selectAllGoodsType---------");
+
+        List<GoodsType> goodsTypeList=goodsTypeService.selectAllGoodsType();
+        HttpSession session=request.getSession();
+
+        session.setAttribute("goodsTypeList",goodsTypeList);
+
+        request.getRequestDispatcher("/index.jsp").forward(request,response);
+
+        System.out.println(goodsTypeList.size());
+        return null;
     }
 }

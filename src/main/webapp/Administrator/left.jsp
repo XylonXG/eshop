@@ -72,14 +72,7 @@
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/user/address.jsp" target="rightFrame">添加收获地址</a>
-            </li>
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/user/bank.jsp" target="rightFrame">添加银行卡</a>
-            </li>
-            <li role="presentation"></li>
-            <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/searchUserList" target="rightFrame">查看用户</a>
+                <a role="menuitem" tabindex="-1" href="/searchOrderList" target="rightFrame">查看订单</a>
             </li>
         </ul>
     </div>
@@ -90,7 +83,7 @@
         </button>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="/user/address.jsp" target="rightFrame">添加收获地址</a>
+                <a role="menuitem" tabindex="-1" href="/user/address.jsp" target="rightFrame">添加优惠</a>
             </li>
             <li role="presentation">
                 <a role="menuitem" tabindex="-1" href="/user/bank.jsp" target="rightFrame">添加银行卡</a>

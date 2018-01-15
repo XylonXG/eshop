@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Monologue-XG
-  Date: 2017/12/28
-  Time: 20:03
+  Date: 2018/1/9
+  Time: 11:17
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
@@ -12,17 +12,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <head>
-    <title></title>
+    <title>查看所有订单</title>
 </head>
 <body>
 <center>
     <table>
         <tr>
-            <td colspan="6"><h3>商 品 信 息</h3></td>
+            <td colspan="6"><h3>用 户 订 单</h3></td>
         </tr>
         <tr>
-            <td colspan="6">商品类型：
-                <form action="/searchGoodsList" method="get">
+            <td colspan="6">用户名：
+                <form action="/searchOrderList" method="get">
                     <input type="text" name="queryCondition" value="${page.queryCondition}" id="condition">
                     <button type="submit" class="btn btn-info">查询</button>
                 </form>
@@ -32,50 +32,43 @@
     <table  class="table table-bordered">
         <tr>
             <th>id</th>
-            <th>商品名称</th>
-            <th>商品简码</th>
-            <th>商品类型</th>
-            <th>供应商</th>
-            <th>上架时间</th>
-            <th>赠品</th>
-            <th>退货</th>
-            <th>创建时间</th>
-            <th>库存量</th>
+            <th>用户名</th>
+            <th>订单号</th>
+            <th>订单日期</th>
+            <th>订单金额</th>
+            <th>订单状态</th>
+            <th>发票金额</th>
+            <th>用户详细地址</th>
             <th>操作</th>
         </tr>
-        <c:forEach items="${goodsList}" var="item" varStatus="status">
+        <c:forEach items="${orderList}" var="item" varStatus="status">
             <tr
                     <c:if test="${status.count%2!=0}">
                         style="background-color:#dbce8f"
                     </c:if>
                     <c:if test="${status.count%2==0}"> style="background-color:grey"</c:if>>
                 <td>${item.id}</td>
-                <td>${item.goodsName}</td>
-                <td>${item.goodsCode}</td>
-                <td>${item.goodsType}</td>
-                <td>${item.goodsSupplier}</td>
-                <td>${item.goodsShelfTime}</td>
-                <td>${item.isGift}</td>
-                <td>${item.isReturn}</td>
-                <td>${item.goodsCreateTime}</td>
-                <td>123</td>
-                <td><a href="/deleteGoods?id=${item.id}">删除</a>|
-                    <a href="/goods/addGoodsDetail.jsp?goodsNum=${item.goodsNum}">添加详情</a>|
-                    <a href="/selectGoodsBygoodNum?goodsNum=${item.goodsNum}">查看</a>
-                </td>
-
+                <td>${item.username}</td>
+                <td>${item.orderNum}</td>
+                <td>${item.orderDate}</td>
+                <td>${item.orderTrueMoney}</td>
+                <td>${item.orderCondition}</td>
+                <td>${item.invoiceMoney}</td>
+                <td>${item.invoiceMoney}</td>
+                <td>${item.userDetailAddress}</td>
+                <td><a href="/deleteOrder?id=${item.id}">删除</a></td>
             </tr>
         </c:forEach>
     </table>
     <br /> <br /> <label>第${page.currentPage}/${page.totalPage}页
-    共${page.totalRows}条</label> <a href="/searchGoodsList?currentPage=0">首页</a> <a
-        href="/searchGoodsList?currentPage=${page.currentPage-1}"
+    共${page.totalRows}条</label> <a href="/searchOrderList?currentPage=0">首页</a> <a
+        href="/searchOrderList?currentPage=${page.currentPage-1}"
         onclick="return checkFirst()">上一页</a> <a
-        href="/searchGoodsList?currentPage=${page.currentPage+1}"
+        href="/searchOrderList?currentPage=${page.currentPage+1}"
         onclick="return checkNext()">下一页</a> <a
-        href="/searchGoodsList?currentPage=${page.totalPage}">尾页</a> 跳转到:<input
-        type="text" style="width:30px" id="turnPage" />页
-    <button type="button" onclick="startTurn()" value="跳转" class="btn btn-primary">跳转</button>
+        href="/searchOrderList?currentPage=${page.totalPage}">尾页</a> 跳转到:<input
+        type="text" style="width:30px" id="turnPage" />页 <input
+        type="button" onclick="startTurn()" value="跳转">
 </center>
 
 <script type="text/javascript">
@@ -116,7 +109,7 @@
 
         }
 
-        var shref="/searchGoodsList?currentPage="+turnPage;
+        var shref="/searchOrderList?currentPage="+turnPage;
 
         window.location.href=shref;
     }

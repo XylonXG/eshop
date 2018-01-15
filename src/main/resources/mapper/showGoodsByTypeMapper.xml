@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xg.mapper.ShowGoodsByTypeMapper">
+    <!--通过商品类型查看商品-->
+  <select id="selectGoodsByGoodsType" parameterType="string" resultType="goods">
+      select * from goodsinfo where goodsType=#{goodsTypeName}
+  </select>
+
+   <select id="selectGoodsDetailByGoodsNum" parameterType="string" resultType="goodsDetail">
+      select * from goodsdetail where goodsNum=#{goodsNum}
+   </select>
+    <!--查看单个商品详细信息-->
+    <select id="showGoodsByGoodsNum" parameterType="string" resultType="goods">
+        select * from goodsinfo where goodsNum=#{goodsNum}
+    </select>
+    <select id="showGoodsDetailByGoodsNum" parameterType="string" resultType="goodsDetail">
+        select * from goodsdetail where goodsNum=#{goodsNum}
+    </select>
+    <!--查询库存量-->
+    <select id="showGoodsCountByGoodsNum" parameterType="string" resultType="int">
+        select goodsCount from depot_gooddetail where goodsNum=#{goodsNum}
+    </select>
+    <!--查看供应商信息-->
+    <select id="showGoodsSupplierByName" parameterType="string" resultType="goodsSupplier">
+        select * from goodssupplier where goodsSupplierName=#{goodsSupplier}
+    </select>
+    <!--商品添加到购物车中-->
+    <insert id="addGoodsToShoppingCart" parameterType="shoppingCart">
+        insert into shoppingCart(userNum,goodsNum,goodsImgHttpURL,goodsDesc,goodsDetailNum,salePrice,buyCount,totalAmount,goodsDetailImgHttpURL1)
+        values(#{userNum},#{goodsNum},#{goodsImgHttpURL},#{goodsDesc},#{goodsDetailNum},#{salePrice},#{buyCount},#{totalAmount},#{goodsDetailImgHttpURL1})
+    </insert>
+    <!--购物车商品展示-->
+    <select id="showShoppingCartByuserNum" resultType="shoppingCart">
+        select * from shoppingcart where userNum=#{userNum}
+    </select>
+    <!--删除购物车中不中意的商品-->
+    <delete id="deleteFromShoppingCartById" parameterType="int">
+        delete from shoppingcart where id=#{id}
+    </delete>
+    <!--添加订单-->
+    <insert id="addOrder" parameterType="order">
+        insert into orderinfo (username,orderNum,userNum,orderDate,orderCondition,orderTotalMoney,orderTrueMoney,invoiceMoney,invoiceID,userAddress,userDetailAddress)
+        values(#{username},#{orderNum},#{userNum},#{orderDate},#{orderCondition},#{orderTotalMoney},#{orderTrueMoney},#{invoiceMoney},#{invoiceID},#{userAddress},#{userDetailAddress})
+    </insert>
+</mapper>

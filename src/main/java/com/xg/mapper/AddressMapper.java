@@ -15,4 +15,7 @@ public interface AddressMapper {
     /*添加收获地址*/
 
     public void addAddress(Address address);
+
+    /*通过用户编号查看用户地址*/
+    public Address selectAddressByuserNum(String userNum);
 }

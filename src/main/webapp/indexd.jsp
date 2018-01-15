@@ -66,11 +66,11 @@
         <div class="yNavIndex">
             <ul class="BHeaderl">
                 <li style="display:none;"><a href="#" style="float:left;">嘻哈杂货铺</a> <a href="#" style="float:left;">退出</a> </li>
-                <li><a href="/userLogin" style="color:#ea4949;">请登录</a> </li>
+                <li><a href="/userLogin" style="color:#ea4949;">会员:${user.username}</a> </li>
                 <li class="headerul">|</li>
                 <li><a href="/user/userReg.jsp">免费注册</a> </li>
                 <li class="headerul">|</li>
-                <li><a href="/addOrder">订单查询</a> </li>
+                <li><a href="/order/myorder.jsp">订单查询</a> </li>
                 <li class="headerul">|</li>
                 <li><a href="/addOrder">我的购物车</a> </li>
                 <li class="headerul">|</li>

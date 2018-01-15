@@ -28,4 +28,9 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
     public Integer deleteGoodsType(Integer paramInteger) {
         return goodsTypeMapper.deleteGoodsType(paramInteger);
     }
+
+    /*查看所有商品类型*/
+    public List<GoodsType> selectAllGoodsType() {
+        return goodsTypeMapper.selectAllGoodsType();
+    }
 }

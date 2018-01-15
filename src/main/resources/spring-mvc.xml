@@ -26,6 +26,8 @@
     <mvc:resources mapping="/theme/img/pd/**" location="/theme/img/pd/"></mvc:resources>
     <mvc:resources mapping="/theme/js/**" location="/theme/js/"></mvc:resources>
     <mvc:resources mapping="/theme/login/**" location="/theme/login/"></mvc:resources>
+    <mvc:resources mapping="/theme/bank/**" location="/theme/bank/"></mvc:resources>
 
+    <mvc:resources mapping="/shoppingCart/**" location="/shoppingCart/"></mvc:resources>
 
 </beans>

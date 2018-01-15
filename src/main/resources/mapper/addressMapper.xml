@@ -21,4 +21,9 @@
         values(#{userNum},#{province},#{city},#{addressDetail},#{isOften},#{isUsed},#{createDate})
     </insert>
 
+    <!--通过用户编号查看地址-->
+    <select id="selectAddressByuserNum" parameterType="string" resultType="address">
+        select * from useraddress where userNum=#{userNum}
+    </select>
+
 </mapper>
